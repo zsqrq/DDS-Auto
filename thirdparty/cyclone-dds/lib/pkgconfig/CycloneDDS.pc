@@ -1,0 +1,9 @@
+prefix=/home/wz/docker/com_modules/cyclonedds-0.10.4/cyclone-dds
+includedir=${prefix}/include
+libdir=${prefix}/lib
+
+Name: CycloneDDS
+Description: Eclipse Cyclone DDS library
+Version: 0.10.4
+Libs: -L${libdir} -lddsc
+Cflags: -I${includedir}
