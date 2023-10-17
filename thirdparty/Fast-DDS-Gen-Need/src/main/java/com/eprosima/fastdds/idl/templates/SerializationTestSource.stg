@@ -1,0 +1,170 @@
+// Copyright 2016 Proyectos y Sistemas de Mantenimiento SL (eProsima).
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+group ProtocolHeader;
+
+import "eprosima.stg"
+
+main(ctx, definitions) ::= <<
+$fileHeader(ctx=ctx,  file=[ctx.filename, "SerializationTest.cpp"], description=["This file contains serialization test code."])$
+
+#include "$ctx.filename$PubSubTypes.h"
+#include "$ctx.filename$Serialization.h"
+#include <fastcdr/Cdr.h>
+#include <fastrtps/rtps/common/SerializedPayload.h>
+
+#include <stdint.h>
+#include <inttypes.h>
+#include <string.h>
+#include <functional>
+#include <vector>
+
+using TestLambda = std::function<bool()>;
+
+std::vector<TestLambda> functions_to_run;
+
+int main(void)
+{
+    srand((unsigned) time(NULL));
+    bool ret_value = true;
+
+    $definitions; separator="\n"$
+
+    for (auto& fc : functions_to_run)
+    {
+        ret_value &= fc();
+    }
+    return ret_value ? 0 : 1;
+}
+
+>>
+
+function_to_run(ctx, parent, struct, cdr_version, test_null_optional) ::= <<
+functions_to_run.emplace_back([]() -> bool
+{
+    std::cout << std::endl <<"======================================== Testing $struct.name$" <<
+            (true == $test_null_optional$ ? " with a null optional" : "") << " using encoding " <<
+            (eprosima::fastdds::dds::DataRepresentationId_t::XCDR_DATA_REPRESENTATION == $cdr_version$ ? "XCDRv1" : "XCDRv2") <<
+            " ========================================" << std::endl;
+    using eprosima::fastrtps::rtps::SerializedPayload_t;
+    $if(struct.hasScope)$    using namespace $struct.scope$;$endif$
+
+    $struct.name$PubSubType $struct.name$_type_support;
+    $struct.name$ $struct.name$_serialization_topic;
+    $struct.name$ $struct.name$_deserialization_topic;
+
+    g_$ctx.filename$_test_null_opt = $test_null_optional$;
+
+    initialize$struct.name$(&$struct.name$_serialization_topic);
+
+    $struct.name$PubSubType pst;
+    uint32_t payloadSize = static_cast<uint32_t>(pst.getSerializedSizeProvider(&$struct.name$_serialization_topic,
+                $cdr_version$)());
+
+    SerializedPayload_t payload(payloadSize);
+    if (pst.serialize(&$struct.name$_serialization_topic, &payload,
+                $cdr_version$) == 0)
+    {
+        return false;
+    }
+
+    if (pst.deserialize(&payload, &$struct.name$_deserialization_topic) == 0)
+    {
+        return false;
+    }
+
+    uint32_t payloadOutSize = static_cast<uint32_t>(pst.getSerializedSizeProvider(&$struct.name$_deserialization_topic,
+                $cdr_version$)());
+
+    int topic_equal = compare$struct.name$(&$struct.name$_serialization_topic, &$struct.name$_deserialization_topic);
+    bool size_equal = payloadOutSize == payloadSize;
+    bool ge_than_max = ($struct.name$_type_support.m_typeSize + 4)>= payloadSize;
+
+    printf("\n");
+    printf("===== Before serialize: =====\n");
+    print$struct.name$(&$struct.name$_serialization_topic);
+    printf("\n");
+    printf("===== After deserialize: =====\n");
+    print$struct.name$(&$struct.name$_deserialization_topic);
+    printf("\n");
+    printf("SerializedPayload_t: \n");
+    printf("length: %d - %d\n", payloadSize, payload.length);
+    printf("max: %" PRIu32 "\n", $struct.name$_type_support.m_typeSize + 4);
+    if (500 > payloadSize)
+    {
+        printf("data: ");
+        for(uint32_t i = 0; i < payloadSize; ++i)
+        {
+            printf("%02X ", payload.data[i]);
+        }
+        printf("\n\n");
+    }
+
+    uint32_t type_size = sizeof($struct.name$);
+    printf("Topic $struct.name$ size: %s => payloadIn: %d, payloadOut: %d, type: %d, max_size: %" PRIu32 "\n", size_equal ? "OK" : "ERROR", payloadSize, payloadOutSize, type_size,
+            $struct.name$_type_support.m_typeSize + 4);
+    printf("Topic $struct.name$ comparation: %s\n", topic_equal ? "OK" : "ERROR");
+
+    $if((ctx.generateTypesC))$
+    free_string$struct.name$(&$struct.name$_serialization_topic);
+    $endif$
+
+    if (!topic_equal || !size_equal || !ge_than_max)
+    {
+        return false;
+    }
+
+    return payload.length == payloadSize;
+});
+>>
+
+fwd_decl(ctx, parent, type) ::= <<>>
+
+struct_type(ctx, parent, struct) ::= <<
+$function_to_run(ctx=ctx, parent=parent, struct=struct,
+        cdr_version="eprosima::fastdds::dds::DataRepresentationId_t::XCDR_DATA_REPRESENTATION",
+        test_null_optional="false")$
+
+$function_to_run(ctx=ctx, parent=parent, struct=struct,
+        cdr_version="eprosima::fastdds::dds::DataRepresentationId_t::XCDR2_DATA_REPRESENTATION",
+        test_null_optional="false")$
+
+$if (struct.containsOptional)$
+$function_to_run(ctx=ctx, parent=parent, struct=struct,
+        cdr_version="eprosima::fastdds::dds::DataRepresentationId_t::XCDR_DATA_REPRESENTATION",
+        test_null_optional="true")$
+
+$function_to_run(ctx=ctx, parent=parent, struct=struct,
+        cdr_version="eprosima::fastdds::dds::DataRepresentationId_t::XCDR2_DATA_REPRESENTATION",
+        test_null_optional="true")$
+$endif$
+>>
+
+union_type(ctx, parent, union) ::= <<>>
+
+enum_type(ctx, parent, enum) ::= <<>>
+
+typedef_decl(ctx, parent, typedefs) ::= <<>>
+
+bitmask_type(ctx, parent, bitmask) ::= <<>>
+
+bitset_type(ctx, parent, bitset) ::= <<>>
+
+annotation(ctx, annotation) ::= <<>>
+
+module(ctx, parent, module, definition_list) ::= <<>>
+
+definition_list(definitions) ::= <<>>
+
+const_decl(ctx, parent, const) ::= <<>>
