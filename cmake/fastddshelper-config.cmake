@@ -10,3 +10,16 @@ include(CMakePackageConfigHelpers)
 include(GNUInstallDirs)
 include(CheckCXXCompilerFlag)
 include(${CMAKE_SOURCE_DIR}/cmake/tros-tool.cmake)
+
+set(Fast_DDS_INC_DIR ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include CACHE INTERNAL "")
+set(Option_Parser_INC_DIRS 
+${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include/fastdds/thirdparty/optionparser 
+${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include/fastdds/thirdparty/optionparser/optionparser
+CACHE INTERNAL "")
+
+list(APPEND MY_RPATHS 
+    "${CMAKE_INSTALL_PREFIX}/lib" 
+    "${CMAKE_INSTALL_PREFIX}/lib/fast-dds"
+    "${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds")
+
+set(DDS_RUN_PATHS ${MY_RPATHS} CACHE INTERNAL "")

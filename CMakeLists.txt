@@ -23,13 +23,22 @@ else()
 endif()
 
 add_link_options(-Wl,--disable-new-dtags)
-set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib;$ORIGIN/../lib/fast-dds;$ORIGIN/../lib/cyclone-dds")
 
 include_directories(
     ${CMAKE_INSTALL_PREFIX}
     ${CMAKE_BINARY_DIR}
     ${CMAKE_CURRENT_BINARY_DIR}
-    ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include
+    ${Fast_DDS_INC_DIR}
+    ${Option_Parser_INC_DIR}
+)
+link_directories(
+    ${CMAKE_INSTALL_PREFIX}/lib
+    ${CMAKE_INSTALL_PREFIX}/lib/fast-dds
+    ${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds
 )
 
+message(WARNING "Install path is : ${CMAKE_INSTALL_PREFIX}")
+
+add_subdirectory(thirdparty)
 add_subdirectory(example)
