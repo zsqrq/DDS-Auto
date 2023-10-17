@@ -2,10 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(Fast-DDS-Example 
     DESCRIPTION "Pure Cmake Project For Fast DDS Example")
 set(CMAKE_CXX_STANDARD 17)
-
 list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/cmake)
-include(CMakePackageConfigHelpers)
-include(GNUInstallDirs)
 
 if(NOT fastddshelper)
     find_package(fastddshelper REQUIRED)
@@ -19,4 +16,20 @@ if(NOT fastrtps_FOUND)
     find_package(fastrtps 2.12 REQUIRED)
 endif()
 
-include(CheckCXXCompilerFlag)
+if(NOT CMAKE_BUILD_TYPE)
+    set(DEFAULT_COMPILE -std=c++17 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
+else()
+    set(DEFAULT_COMPILE -std=c++17 -O3 -Wall -c -fmessage-length=0 -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
+endif()
+
+add_link_options(-Wl,--disable-new-dtags)
+set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib")
+
+include_directories(
+    ${CMAKE_INSTALL_PREFIX}
+    ${CMAKE_BINARY_DIR}
+    ${CMAKE_CURRENT_BINARY_DIR}
+    ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include
+)
+
+add_subdirectory(example)
