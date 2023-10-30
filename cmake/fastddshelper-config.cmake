@@ -1,6 +1,7 @@
 list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/share/fastrtps/cmake)
 list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/lib/cmake/fastcdr)
 list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/lib/foonathan_memory/cmake)
+list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/thirdparty/Boost/lib/cmake/Boost-1.83.0)
 
 set(fastcdr_ROOT ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/lib/cmake/fastcdr CACHE INTERNAL "")
 set(foonathan_ROOT_DIR  ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/lib/foonathan_memory/cmake CACHE INTERNAL "")

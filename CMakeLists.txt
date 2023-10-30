@@ -16,6 +16,10 @@ if(NOT fastrtps_FOUND)
     find_package(fastrtps 2.12 REQUIRED)
 endif()
 
+if(NOT Boost_FOUND)
+    find_package(Boost REQUIRED)
+endif()
+
 if(NOT CMAKE_BUILD_TYPE)
     set(DEFAULT_COMPILE -std=c++17 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 else()
@@ -31,8 +35,10 @@ include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}
     ${Fast_DDS_INC_DIR}
     ${Option_Parser_INC_DIR}
+    ${Boost_INCLUDE_DIRS}
 )
 link_directories(
+    ${Boost_LIBRARIES}
     ${CMAKE_INSTALL_PREFIX}/lib
     ${CMAKE_INSTALL_PREFIX}/lib/fast-dds
     ${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds
