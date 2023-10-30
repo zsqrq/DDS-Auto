@@ -3,6 +3,23 @@
     "C_Cpp.clang_format_fallbackStyle": "Google",
     "C_Cpp.clang_format_sortIncludes": true,
     "files.associations": {
-        "utility": "cpp"
+        "utility": "cpp",
+        "*.ipp": "cpp",
+        "*.tcc": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp",
+        "regex": "cpp",
+        "atomic": "cpp",
+        "rope": "cpp",
+        "future": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp",
+        "memory_resource": "cpp",
+        "mutex": "cpp",
+        "*.txx": "cpp",
+        "bitset": "cpp",
+        "type_traits": "cpp",
+        "variant": "cpp"
     }
 }
