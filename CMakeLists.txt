@@ -38,7 +38,7 @@ include_directories(
     ${Boost_INCLUDE_DIRS}
 )
 link_directories(
-    ${Boost_LIBRARIES}
+    ${BOOST_LIB_DIR}
     ${CMAKE_INSTALL_PREFIX}/lib
     ${CMAKE_INSTALL_PREFIX}/lib/fast-dds
     ${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds

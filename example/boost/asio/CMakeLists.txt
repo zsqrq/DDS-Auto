@@ -43,3 +43,14 @@ target_link_libraries(Asio_mem_func_handle
 install(TARGETS Asio_mem_func_handle
 RUNTIME 
 DESTINATION examples/cpp/boost/asio/${BIN_INSTALL_DIR})
+
+add_executable(Asio_sync_handle_multithreads sync_handles_multithreading.cpp)
+target_link_libraries(Asio_sync_handle_multithreads
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+)
+install(TARGETS Asio_sync_handle_multithreads
+RUNTIME 
+DESTINATION examples/cpp/boost/asio/${BIN_INSTALL_DIR})

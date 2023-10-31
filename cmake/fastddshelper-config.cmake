@@ -17,6 +17,7 @@ set(Option_Parser_INC_DIRS
 ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include/fastdds/thirdparty/optionparser 
 ${CMAKE_SOURCE_DIR}/thirdparty/fast-dds/include/fastdds/thirdparty/optionparser/optionparser
 CACHE INTERNAL "")
+set(BOOST_LIB_DIR ${CMAKE_SOURCE_DIR}/thirdparty/Boost/lib CACHE INTERNAL "")
 
 list(APPEND MY_RPATHS 
     "${CMAKE_INSTALL_PREFIX}/lib" 
