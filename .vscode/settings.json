@@ -20,6 +20,7 @@
         "*.txx": "cpp",
         "bitset": "cpp",
         "type_traits": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "iostream": "cpp"
     }
 }
