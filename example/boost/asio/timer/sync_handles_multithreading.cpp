@@ -55,4 +55,5 @@ int main(int argc, char** argv) {
   boost::thread t(boost::bind(&boost::asio::io_context::run, &io));
   io.run();
   t.join();
+  return 0;
 }

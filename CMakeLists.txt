@@ -27,7 +27,7 @@ else()
 endif()
 
 add_link_options(-Wl,--disable-new-dtags)
-set(CMAKE_INSTALL_RPATH "$ORIGIN/../lib;$ORIGIN/../lib/fast-dds;$ORIGIN/../lib/cyclone-dds")
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;$ORIGIN/../lib;$ORIGIN/../lib/fast-dds;$ORIGIN/../lib/cyclone-dds")
 
 include_directories(
     ${CMAKE_INSTALL_PREFIX}
