@@ -50,7 +50,7 @@ unset(_cmake_expected_targets)
 set(_IMPORT_PREFIX "/home/wz/docker/softwares/iceoryx/build/install/prefix")
 
 # Create imported target iceoryx_platform::iceoryx_platform
-add_library(iceoryx_platform::iceoryx_platform STATIC IMPORTED)
+add_library(iceoryx_platform::iceoryx_platform SHARED IMPORTED)
 
 set_target_properties(iceoryx_platform::iceoryx_platform PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"

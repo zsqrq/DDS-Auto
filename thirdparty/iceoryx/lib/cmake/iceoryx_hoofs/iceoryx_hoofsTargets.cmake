@@ -50,11 +50,11 @@ unset(_cmake_expected_targets)
 set(_IMPORT_PREFIX "/home/wz/docker/softwares/iceoryx/build/install/prefix")
 
 # Create imported target iceoryx_hoofs::iceoryx_hoofs
-add_library(iceoryx_hoofs::iceoryx_hoofs STATIC IMPORTED)
+add_library(iceoryx_hoofs::iceoryx_hoofs SHARED IMPORTED)
 
 set_target_properties(iceoryx_hoofs::iceoryx_hoofs PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"
-  INTERFACE_LINK_LIBRARIES "iceoryx_platform::iceoryx_platform;\$<LINK_ONLY:acl>;\$<LINK_ONLY:atomic>"
+  INTERFACE_LINK_LIBRARIES "iceoryx_platform::iceoryx_platform"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

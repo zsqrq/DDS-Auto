@@ -50,11 +50,11 @@ unset(_cmake_expected_targets)
 set(_IMPORT_PREFIX "/home/wz/docker/softwares/iceoryx/build/install/prefix")
 
 # Create imported target iceoryx_binding_c::iceoryx_binding_c
-add_library(iceoryx_binding_c::iceoryx_binding_c STATIC IMPORTED)
+add_library(iceoryx_binding_c::iceoryx_binding_c SHARED IMPORTED)
 
 set_target_properties(iceoryx_binding_c::iceoryx_binding_c PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"
-  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:iceoryx_posh::iceoryx_posh>;stdc++;pthread"
+  INTERFACE_LINK_LIBRARIES "stdc++;pthread"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)
@@ -93,24 +93,8 @@ endforeach()
 unset(_cmake_target)
 unset(_cmake_import_check_targets)
 
-# Make sure the targets which have been exported in some other
-# export set exist.
-unset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)
-foreach(_target "iceoryx_posh::iceoryx_posh" )
-  if(NOT TARGET "${_target}" )
-    set(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets "${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets} ${_target}")
-  endif()
-endforeach()
-
-if(DEFINED ${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)
-  if(CMAKE_FIND_PACKAGE_NAME)
-    set( ${CMAKE_FIND_PACKAGE_NAME}_FOUND FALSE)
-    set( ${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE "The following imported targets are referenced, but are missing: ${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets}")
-  else()
-    message(FATAL_ERROR "The following imported targets are referenced, but are missing: ${${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets}")
-  endif()
-endif()
-unset(${CMAKE_FIND_PACKAGE_NAME}_NOT_FOUND_MESSAGE_targets)
+# This file does not depend on other imported targets which have
+# been exported from the same project but in a separate export set.
 
 # Commands beyond this point should not need to know the version.
 set(CMAKE_IMPORT_FILE_VERSION)

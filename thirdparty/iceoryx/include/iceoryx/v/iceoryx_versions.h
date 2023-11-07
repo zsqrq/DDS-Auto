@@ -23,7 +23,7 @@
 #define ICEORYX_VERSION_TWEAK    0
 
 #define ICEORYX_LATEST_RELEASE_VERSION    "2.90.0"
-#define ICEORYX_BUILDDATE                 "2023-11-07T11:00:51Z"
+#define ICEORYX_BUILDDATE                 "2023-11-07T11:09:58Z"
 #define ICEORYX_SHA1                      "bf428222dce6c862103ec6d9a28a2ccc6127cf12-dirty"
 
 #endif // IOX_ICEORYX_VERSIONS_H

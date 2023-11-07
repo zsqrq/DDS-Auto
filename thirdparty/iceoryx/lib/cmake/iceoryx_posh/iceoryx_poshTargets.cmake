@@ -50,23 +50,23 @@ unset(_cmake_expected_targets)
 set(_IMPORT_PREFIX "/home/wz/docker/softwares/iceoryx/build/install/prefix")
 
 # Create imported target iceoryx_posh::iceoryx_posh
-add_library(iceoryx_posh::iceoryx_posh STATIC IMPORTED)
+add_library(iceoryx_posh::iceoryx_posh SHARED IMPORTED)
 
 set_target_properties(iceoryx_posh::iceoryx_posh PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"
-  INTERFACE_LINK_LIBRARIES "iceoryx_hoofs::iceoryx_hoofs;iceoryx_dust::iceoryx_dust;\$<LINK_ONLY:-lpthread>;\$<LINK_ONLY:rt>"
+  INTERFACE_LINK_LIBRARIES "iceoryx_hoofs::iceoryx_hoofs;iceoryx_dust::iceoryx_dust"
 )
 
 # Create imported target iceoryx_posh::iceoryx_posh_roudi
-add_library(iceoryx_posh::iceoryx_posh_roudi STATIC IMPORTED)
+add_library(iceoryx_posh::iceoryx_posh_roudi SHARED IMPORTED)
 
 set_target_properties(iceoryx_posh::iceoryx_posh_roudi PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"
-  INTERFACE_LINK_LIBRARIES "iceoryx_posh::iceoryx_posh;\$<LINK_ONLY:iceoryx_hoofs::iceoryx_hoofs>"
+  INTERFACE_LINK_LIBRARIES "iceoryx_posh::iceoryx_posh"
 )
 
 # Create imported target iceoryx_posh::iceoryx_posh_gateway
-add_library(iceoryx_posh::iceoryx_posh_gateway STATIC IMPORTED)
+add_library(iceoryx_posh::iceoryx_posh_gateway SHARED IMPORTED)
 
 set_target_properties(iceoryx_posh::iceoryx_posh_gateway PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"
@@ -74,11 +74,10 @@ set_target_properties(iceoryx_posh::iceoryx_posh_gateway PROPERTIES
 )
 
 # Create imported target iceoryx_posh::iceoryx_posh_config
-add_library(iceoryx_posh::iceoryx_posh_config STATIC IMPORTED)
+add_library(iceoryx_posh::iceoryx_posh_config SHARED IMPORTED)
 
 set_target_properties(iceoryx_posh::iceoryx_posh_config PROPERTIES
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include/iceoryx/v"
-  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:iceoryx_posh::iceoryx_posh>;\$<LINK_ONLY:iceoryx_hoofs::iceoryx_hoofs>;\$<LINK_ONLY:iceoryx_posh::iceoryx_posh_roudi>;\$<LINK_ONLY:cpptoml>"
 )
 
 # Create imported target iceoryx_posh::iox-roudi
