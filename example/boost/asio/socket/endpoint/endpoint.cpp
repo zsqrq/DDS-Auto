@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "endpoints.h"
+#include "glog/logging.h"
 
 int client_end_point() {
   // Step 1.
@@ -14,8 +15,10 @@ int client_end_point() {
   boost::asio::ip::address ip_address = boost::asio::ip::address::from_string(raw_ip_address,ec);
 
   if (ec.value() != 0) {
-    std::cout << "Failed to parse the IP address. Error code = "
-              << ec.value() << "Message is :" << ec.message() << std::endl;
+    LOG(INFO) <<"Failed to parse the IP address. Error code = "
+              << ec.value() << "Message is :" << ec.message();
+//    std::cout << "Failed to parse the IP address. Error code = "
+//              << ec.value() << "Message is :" << ec.message() << std::endl;
     return ec.value();
   }
 
@@ -54,7 +57,7 @@ int create_tcp_socket() {
   sock.open(protocl, ec);
   if (ec.value() != 0) {
     // Failed to open the socket.
-    std::cout
+    LOG(INFO)
         << "Failed to open the socket! Error code = "
         << ec.value() << ". Message: " << ec.message();
     return ec.value();
@@ -79,7 +82,7 @@ int create_acceptor_socket() {
 
   if (ec.value() != 0) {
     // Failed to open the socket.
-    std::cout
+    LOG(INFO)
         << "Failed to open the acceptor socket!"
         << "Error code = "
         << ec.value() << ". Message: " << ec.message();
@@ -109,7 +112,7 @@ int bind_acceptor_socket() {
   if (ec.value() != 0) {
     // Failed to bind the acceptor socket. Breaking
     // execution.
-    std::cout << "Failed to bind the acceptor socket."
+    LOG(INFO) << "Failed to bind the acceptor socket."
               << "Error code = " << ec.value() << ". Message: "
               << ec.message();
 
@@ -135,7 +138,7 @@ int connect_to_end() {
     // Step 4. Connecting a socket.
     sock.connect(ep);
   } catch (boost::system::system_error& e) {
-    std::cout << "Error occured! Error code = " << e.code()
+    LOG(INFO) << "Error occured! Error code = " << e.code()
               << ". Message: " << e.what();
 
     return e.code().value();
@@ -171,7 +174,7 @@ int dns_connect_to_end() {
     // error occurs.
     boost::asio::connect(sock, iter);
   } catch (boost::system::system_error& e) {
-    std::cout << "Error occured! Error code = " << e.code()
+    LOG(INFO) << "Error occured! Error code = " << e.code()
       << ". Message is : " << e.what();
     return e.code().value();
   }
