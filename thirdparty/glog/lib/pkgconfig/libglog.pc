@@ -1,0 +1,11 @@
+prefix=/home/wz/docker/softwares/glog/glog
+exec_prefix=/home/wz/docker/softwares/glog/glog/bin
+libdir=/home/wz/docker/softwares/glog/glog/lib
+includedir=/home/wz/docker/softwares/glog/glog/include
+
+Name: libglog
+Description: Google Log (glog) C++ logging framework
+Version: 0.7.0
+Libs: -L${libdir} -lglog
+Libs.private: -lpthread -lgflags
+Cflags: -I${includedir}

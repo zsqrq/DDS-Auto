@@ -1,3 +1,5 @@
 build/
 production/
 .vscode/
+cmake-build-debug
+.idea

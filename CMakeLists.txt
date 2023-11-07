@@ -20,6 +20,10 @@ if(NOT Boost_FOUND)
     find_package(Boost REQUIRED)
 endif()
 
+if(NOT glog_FOUND)
+    find_package(glog REQUIRED)
+endif()
+
 if(NOT CMAKE_BUILD_TYPE)
     set(DEFAULT_COMPILE -std=c++17 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 else()
@@ -36,6 +40,7 @@ include_directories(
     ${Fast_DDS_INC_DIR}
     ${Option_Parser_INC_DIR}
     ${Boost_INCLUDE_DIRS}
+    ${GLOG_INC_DIR}
 )
 link_directories(
     ${BOOST_LIB_DIR}
@@ -44,7 +49,7 @@ link_directories(
     ${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds
 )
 
-message(WARNING "Install path is : ${CMAKE_INSTALL_PREFIX}")
+#message(WARNING "Install path is : ${CMAKE_INSTALL_PREFIX}")
 
 add_subdirectory(thirdparty)
 add_subdirectory(example)
