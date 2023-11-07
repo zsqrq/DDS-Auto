@@ -17,7 +17,7 @@ if(NOT fastrtps_FOUND)
 endif()
 
 if(NOT Boost_FOUND)
-    find_package(Boost REQUIRED)
+    find_package(Boost 1.83 REQUIRED)
 endif()
 
 if(NOT glog_FOUND)
