@@ -2,3 +2,5 @@ set(Asio_Socket_LIBS ${Boost_LIBRARIES} boost_thread boost_coroutine boost_conte
 
 add_subdirectory(endpoint)
 add_subdirectory(iooperation)
+add_subdirectory(SyncClient)
+add_subdirectory(SyncServer)

@@ -258,8 +258,8 @@ int async_write_data() {
     auto socket_ptr =
         std::make_shared<boost::asio::ip::tcp::socket>(iox, ep.protocol());
     auto session_ptr = std::make_shared<Session>(socket_ptr);
-//    session_ptr->Connect(ep);
-//    session_ptr->WriteToSocket("Hello world");
+    session_ptr->Connect(ep);
+    session_ptr->WriteToSocket("Hello world");
     iox.run();
   } catch (boost::system::system_error& e) {
     std::cout << "Error occured! Error code = " << e.code()
