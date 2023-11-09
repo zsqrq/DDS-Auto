@@ -25,7 +25,8 @@ void Session::WriteCallBack(const boost::system::error_code &ec, std::size_t byt
   if (send_data->cur_len_ < send_data->total_len_) {
     this->_socket->async_write_some(boost::asio::buffer(send_data->msg_ + send_data->cur_len_,
                                                         send_data->total_len_ - send_data->cur_len_),
-                                    std::bind(&Session::WriteCallBack, this,std::placeholders::_1,std::placeholders::_2));
+                                    std::bind(&Session::WriteCallBack,
+                                              this,std::placeholders::_1,std::placeholders::_2));
     return;
   }
   _send_queue.pop();
@@ -98,6 +99,15 @@ void Session::ReadCallBack(const boost::system::error_code& ec, std::size_t byte
   _recv_node = nullptr;
 }
 
+void Session::ReadAllFromSocket(const std::string &buf) {
+  if (_recv_pending) { return;}
+  _recv_node = std::make_shared<MsgNode>(RECVSIZE);
+  _socket->async_receive(asio::buffer(_recv_node->msg_,_recv_node->total_len_),
+                         std::bind(&Session::ReadAllCallBack,this,
+                                   std::placeholders::_1, std::placeholders::_2));
+  _recv_pending = true;
+}
+
 void Session::ReadAllCallBack(const boost::system::error_code& ec, std::size_t bytes_transferred) {
   _recv_node->cur_len_ += bytes_transferred;
   _recv_pending = false;
@@ -109,7 +119,7 @@ void Session::WriteCallBackErr(const boost::system::error_code& ec,
   if (bytes_transferred + msg_node->cur_len_
       < msg_node->total_len_) {
     _send_node->cur_len_ += bytes_transferred;
-    this->_socket->async_write_some(asio::buffer(_send_node->msg_+_send_node->cur_len_,
+    this->_socket->async_write_some(asio::buffer(_send_node->msg_ + _send_node->cur_len_,
                                                  _send_node->total_len_-_send_node->cur_len_),
                                     std::bind(&Session::WriteCallBackErr,
                                               this, std::placeholders::_1, std::placeholders::_2, _send_node));
