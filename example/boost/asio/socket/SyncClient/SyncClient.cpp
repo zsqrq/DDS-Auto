@@ -12,6 +12,9 @@ constexpr int MAX_LENGTH = 1024;
 using namespace boost;
 
 int main(int argc, char* argv[]) {
+  FLAGS_logtostderr = 1;  // 设置日志输出到stderr，而不是文件
+  FLAGS_minloglevel = 0;  // 设置最低日志级别为INFO
+  google::InitGoogleLogging("Sync Client");
   try {
     asio::io_context io_context;
 
