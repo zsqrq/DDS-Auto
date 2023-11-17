@@ -193,3 +193,4 @@ macro(generate_doc_file)
     endif ()
 
 endmacro()
+include(${CMAKE_SOURCE_DIR}/cmake/proto-gen.cmake)

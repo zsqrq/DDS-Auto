@@ -41,9 +41,11 @@ include_directories(
     ${Option_Parser_INC_DIR}
     ${Boost_INCLUDE_DIRS}
     ${GLOG_INC_DIR}
+    ${Protobuf_INC_DIR}
 )
 link_directories(
     ${BOOST_LIB_DIR}
+    ${Protobuf_LIBS_DIR}
     ${CMAKE_INSTALL_PREFIX}/lib
     ${CMAKE_INSTALL_PREFIX}/lib/fast-dds
     ${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds

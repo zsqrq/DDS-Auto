@@ -1,2 +1,4 @@
 add_subdirectory(asyncserver01)
 add_subdirectory(syncclient01)
+add_subdirectory(adhereasyncserver01)
+add_subdirectory(adheresyncclient)

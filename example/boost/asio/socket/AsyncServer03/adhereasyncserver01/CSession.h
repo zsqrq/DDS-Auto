@@ -62,7 +62,7 @@ class CSession: public std::enable_shared_from_this<CSession>
   void Start();
   void Send(char* msg,  int max_length);
   void Close();
-
+  void PrintRecvData(char* data, int length);
   CSessionPtr SharedSelf();
  private:
   void HandleRead(const boost::system::error_code& error, size_t  bytes_transferred, CSessionPtr shared_self);
