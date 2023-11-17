@@ -3,3 +3,4 @@ production/
 .vscode/
 cmake-build-debug
 .idea
+thirdparty/protobuf/lib
