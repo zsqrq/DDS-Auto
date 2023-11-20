@@ -24,6 +24,10 @@ if(NOT glog_FOUND)
     find_package(glog REQUIRED)
 endif()
 
+if(NOT Json)
+    find_package(jsoncpp REQUIRED)
+endif()
+
 if(NOT CMAKE_BUILD_TYPE)
     set(DEFAULT_COMPILE -std=c++17 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 else()
@@ -42,9 +46,11 @@ include_directories(
     ${Boost_INCLUDE_DIRS}
     ${GLOG_INC_DIR}
     ${Protobuf_INC_DIR}
+    ${JsonCpp_INC_DIR}
 )
 link_directories(
     ${BOOST_LIB_DIR}
+    ${JsonCpp_LIBS_DIR}
     ${Protobuf_LIBS_DIR}
     ${CMAKE_INSTALL_PREFIX}/lib
     ${CMAKE_INSTALL_PREFIX}/lib/fast-dds

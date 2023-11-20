@@ -1,12 +1,12 @@
 macro(generate_protos src_dir)
 
   if(NOT PROTOBUF_PROTOC_EXECUTABLE)
-    message(WARNING "Protobuf compiler is not found.")
+#    message(WARNING "Protobuf compiler is not found.")
     set(PROTOBUF_PROTOC_EXECUTABLE "${CMAKE_SOURCE_DIR}/thirdparty/protobuf/bin/protoc")
   endif()
 
   file(GLOB PROTO_FILES "${src_dir}/*.proto")
-  message(WARNING "Protobuf files is ${PROTO_FILES}")
+#  message(WARNING "Protobuf files is ${PROTO_FILES}")
   add_custom_target(proto_messages ALL)
   foreach(PROTO_FILE ${PROTO_FILES})
     get_filename_component(PROTO_NAME ${PROTO_FILE} NAME_WE)
