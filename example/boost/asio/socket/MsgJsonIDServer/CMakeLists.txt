@@ -1,1 +1,2 @@
 add_subdirectory(LogicServer)
+add_subdirectory(JsonClient)

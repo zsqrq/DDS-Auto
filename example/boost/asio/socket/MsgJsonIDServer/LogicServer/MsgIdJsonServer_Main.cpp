@@ -7,6 +7,9 @@
 using namespace std;
 int main()
 {
+  FLAGS_minloglevel = 0;
+  FLAGS_alsologtostderr = 1;
+  google::InitGoogleLogging("Jsong Sever");
   try {
     boost::asio::io_context  io_context;
     CServer s(io_context, 10086);
