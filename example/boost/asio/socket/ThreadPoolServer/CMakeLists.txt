@@ -1,1 +1,2 @@
 add_subdirectory(ThreadPoolServer)
+add_subdirectory(ThreadPoolClient)
