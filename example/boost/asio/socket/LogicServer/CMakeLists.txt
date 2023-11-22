@@ -1,2 +1,3 @@
 add_subdirectory(LogicServer01)
 add_subdirectory(LogicServer02)
+add_subdirectory(LogicClient)
