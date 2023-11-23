@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.22)
 project(Fast-DDS-Example 
     DESCRIPTION "Pure Cmake Project For Fast DDS Example")
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 list(APPEND CMAKE_FIND_ROOT_PATH ${CMAKE_SOURCE_DIR}/cmake)
 
 if(NOT fastddshelper)
@@ -29,9 +29,9 @@ if(NOT Json)
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(DEFAULT_COMPILE -std=c++17 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
+    set(DEFAULT_COMPILE -std=c++20 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 else()
-    set(DEFAULT_COMPILE -std=c++17 -O3 -Wall -c -fmessage-length=0 -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
+    set(DEFAULT_COMPILE -std=c++20 -O3 -Wall -c -fmessage-length=0 -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 endif()
 
 add_link_options(-Wl,--disable-new-dtags)
