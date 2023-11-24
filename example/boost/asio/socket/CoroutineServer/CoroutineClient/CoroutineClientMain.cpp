@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
         while (i<500) {
           Json::Value root;
           root["id"] = 1001;
-          root["data"] = "hello world";
+          root["data"] = "hello world"+ std::to_string(i);
           std::string request = root.toStyledString();
           size_t request_length = request.length();
           char send_data[MAX_LENGTH] = { 0 };
@@ -77,7 +77,7 @@ int main(int argc, char* argv[])
         LOG(ERROR) << "Exception: " << e.what();
       }
     });
-    std::this_thread::sleep_for(std::chrono::milliseconds(10));
+    std::this_thread::sleep_for(std::chrono::milliseconds(30));
   }
 
   for (auto& t : vec_threads) {
