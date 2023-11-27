@@ -1,2 +1,3 @@
 add_subdirectory(asio)
 add_subdirectory(coroutine2)
+add_subdirectory(fiber)

@@ -33,3 +33,5 @@ list(APPEND MY_RPATHS
     "${CMAKE_INSTALL_PREFIX}/lib/cyclone-dds")
 
 set(DDS_RUN_PATHS ${MY_RPATHS} CACHE INTERNAL "")
+set(Boost_LIBRARIES boost_thread boost_coroutine boost_context
+    boost_fiber boost_unit_test_framework CACHE INTERNAL "")
