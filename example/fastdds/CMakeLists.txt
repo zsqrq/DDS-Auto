@@ -1,1 +1,2 @@
 add_subdirectory(HelloWorldExample)
+add_subdirectory(HelloWorldExampleDataSharing)

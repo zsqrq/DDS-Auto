@@ -4,6 +4,7 @@
 #include "boost/fiber/all.hpp"
 #include "boost/context/continuation.hpp"
 #include "glog/logging.h"
+#include <condition_variable>
 
 int main() {
   namespace ctx=boost::context;

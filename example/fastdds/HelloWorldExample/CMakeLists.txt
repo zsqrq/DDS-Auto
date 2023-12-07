@@ -40,4 +40,4 @@ target_link_libraries(DDSHelloWorldExample
 )
 
 install(TARGETS DDSHelloWorldExample
-    RUNTIME DESTINATION examples/cpp/dds/HelloWorldExample/${BIN_INSTALL_DIR})
+    RUNTIME DESTINATION examples/cpp/fastdds/${BIN_INSTALL_DIR})

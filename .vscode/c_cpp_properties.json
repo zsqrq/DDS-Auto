@@ -3,12 +3,20 @@
         {
             "name": "Linux",
             "includePath": [
-                "${workspaceFolder}/**"
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty",
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty/Boost/include",
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty/fast-dds/include",
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty/fast-dds/include/fastcdr",
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty/fast-dds/include/fastdds",
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty/fast-dds/include/fastrtps",
+                "/home/wz/docker/Tros-Auto/Tros-Auto/thirdparty/fast-dds/include/foonathan",
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/thirdparty"
             ],
             "defines": [],
-            "compilerPath": "/usr/bin/gcc",
-            "cStandard": "gnu11",
-            "cppStandard": "gnu++20",
+            "compilerPath": "/usr/bin/g++",
+            "cppStandard": "c++20",
+            "cStandard": "c23",
             "intelliSenseMode": "Google"
         }
     ],
