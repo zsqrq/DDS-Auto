@@ -1,2 +1,4 @@
 add_subdirectory(HelloWorldExample)
 add_subdirectory(HelloWorldExampleDataSharing)
+add_subdirectory(HelloWorldExampleSharedMem)
+add_subdirectory(ZeroCopyExample)

@@ -28,6 +28,7 @@
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 
 #include "HelloWorld.h"
+#include "HelloWorldPubSubTypes.h"
 
 class HelloWorldSubscriber {
  public:

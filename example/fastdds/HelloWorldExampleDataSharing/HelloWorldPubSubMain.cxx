@@ -22,6 +22,7 @@
 #include "HelloWorldPublisher.h"
 #include "HelloWorldSubscriber.h"
 #include "glog/logging.h"
+//#include <hbmem.h>
 
 int main(int argc, char** argv) {
   FLAGS_alsologtostderr = 1;
