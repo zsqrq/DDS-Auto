@@ -16,8 +16,8 @@ install(TARGETS example01_thread
     RUNTIME
     DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
 
-add_executable(example01_mutexlock example02_mutexlock.cpp)
-target_link_libraries(example01_mutexlock
+add_executable(example02_mutexlock example02_mutexlock.cpp)
+target_link_libraries(example02_mutexlock
     PUBLIC ${Boost_LIBRARIES}
     PUBLIC fastrtps
     PUBLIC fastcdr
@@ -26,7 +26,21 @@ target_link_libraries(example01_mutexlock
     PUBLIC boost_context
     PUBLIC glog::glog
 )
-install(TARGETS example01_mutexlock
+install(TARGETS example02_mutexlock
+    RUNTIME
+    DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
+
+add_executable(example03_uniquelock example03_uniquelock.cpp)
+target_link_libraries(example03_uniquelock
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC glog::glog
+)
+install(TARGETS example03_uniquelock
     RUNTIME
     DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
 
