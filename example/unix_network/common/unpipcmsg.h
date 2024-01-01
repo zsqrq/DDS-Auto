@@ -152,8 +152,7 @@ union semun {				/* define union for semctl() */
 #define	DIR_MODE	(FILE_MODE | S_IXUSR | S_IXGRP | S_IXOTH)
 /* default permissions for new directories */
 /* $$.ix [DIR_MODE]~constant,~definition~of$$ */
-#include <linux/msg.h>
-#include <sys/msg.h>
+
 #define MSG_R 0400
 #define MSG_W 0200
 

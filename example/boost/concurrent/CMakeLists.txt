@@ -44,3 +44,31 @@ install(TARGETS example03_uniquelock
     RUNTIME
     DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
 
+add_executable(example04_singleton example04_singleton.cpp)
+target_link_libraries(example04_singleton
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC glog::glog
+)
+install(TARGETS example04_singleton
+    RUNTIME
+    DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
+
+add_executable(example05_condition_variable example05_condition_variable.cpp)
+target_link_libraries(example05_condition_variable
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC glog::glog
+)
+install(TARGETS example05_condition_variable
+    RUNTIME
+    DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
+
