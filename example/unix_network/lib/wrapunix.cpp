@@ -68,8 +68,7 @@ Fcntl(int fd, int cmd, void *arg)
   return(n);
 }
 
-pid_t
-Fork(void)
+pid_t Fork(void)
 {
   pid_t	pid;
 
