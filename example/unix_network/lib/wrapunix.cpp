@@ -747,3 +747,8 @@ Write(int fd, void *ptr, size_t nbytes)
   if (write(fd, ptr, nbytes) != nbytes)
     err_sys("write error");
 }
+void Write(int fd, const void *ptr, size_t nbytes)
+{
+  if (write(fd, ptr, nbytes) != nbytes)
+    err_sys("write error");
+}

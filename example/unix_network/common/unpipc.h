@@ -339,6 +339,7 @@ void	*Valloc(size_t);
 pid_t	 Wait(int *);
 pid_t	 Waitpid(pid_t, int *, int);
 void	 Write(int, void *, size_t);
+void	 Write(int, const void *, size_t);
 
 #ifdef	HAVE_MQUEUE_H
 /* 4Posix message queues */
