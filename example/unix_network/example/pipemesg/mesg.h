@@ -1,6 +1,7 @@
 //
 // Created by wz on 24-1-3.
 //
+#pragma once
 
 #include	"common/unpipc.h"
 
