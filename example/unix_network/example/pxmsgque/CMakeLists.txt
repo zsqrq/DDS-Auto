@@ -24,3 +24,27 @@ target_link_libraries(unix_network_pxmesg_mqgetattr
 install(TARGETS unix_network_pxmesg_mqgetattr
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/pxmsgque/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxmesg_mqcreate mqcreate.cpp)
+target_link_libraries(unix_network_pxmesg_mqcreate
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxmesg_mqcreate
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxmsgque/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxmesg_mqsend mqsend.cpp)
+target_link_libraries(unix_network_pxmesg_mqsend
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxmesg_mqsend
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxmsgque/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxmesg_mqreceive mqreceive.cpp)
+target_link_libraries(unix_network_pxmesg_mqreceive
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxmesg_mqreceive
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxmsgque/${BIN_INSTALL_DIR})

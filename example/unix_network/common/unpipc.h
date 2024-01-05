@@ -347,6 +347,7 @@ mqd_t	 Mq_open(const char *, int, ...);
 void	 Mq_close(mqd_t);
 void	 Mq_unlink(const char *pathname);
 void	 Mq_send(mqd_t, const char *, size_t, unsigned int);
+//void	 Mq_send(mqd_t, void *, size_t, unsigned int);
 ssize_t	 Mq_receive(mqd_t, char *, size_t, unsigned int *);
 void	 Mq_notify(mqd_t, const struct sigevent *);
 void	 Mq_getattr(mqd_t, struct mq_attr *);

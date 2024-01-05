@@ -252,6 +252,13 @@ Mq_send(mqd_t mqd, const char *ptr, size_t len, unsigned int prio)
     err_sys("mq_send error");
 }
 
+//void
+//Mq_send(mqd_t mqd, void *ptr, size_t len, unsigned int prio)
+//{
+//  if (mq_send(mqd, ptr, len, prio) == -1)
+//    err_sys("mq_send error");
+//}
+
 ssize_t
 Mq_receive(mqd_t mqd, char *ptr, size_t len, unsigned int *prio)
 {
