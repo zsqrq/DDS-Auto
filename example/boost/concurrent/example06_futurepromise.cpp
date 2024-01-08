@@ -10,6 +10,7 @@
 #include "threadpool.h"
 
 std::string fetchDataFromDB(std::string query) {
+  LOG(INFO) << "fetchDataFromDB Starting ......";
   std::this_thread::sleep_for(std::chrono::seconds(5));
   return "Data : " + query;
 }
@@ -22,6 +23,7 @@ void use_async() {
 }
 
 int my_task() {
+  LOG(INFO) << "my task starting ......";
   std::this_thread::sleep_for(std::chrono::seconds(5));
   LOG(INFO) << "my task run 5 s";
   return 42;
@@ -32,21 +34,24 @@ void use_package() {
 
   std::future<int> result = task.get_future();
   std::thread t(std::move(task));
+  LOG(INFO) << "use_package ready to detach....";
   t.detach();
   int res = result.get();
   LOG(INFO) << "The result is: " << res;
 }
 
 void myFunction(std::promise<int>&& promise) {
-  LOG(INFO) <<  "myFunction Starting set value: ";
+  LOG(INFO) <<  "myFunction Starting set value ...... ";
   std::this_thread::sleep_for(std::chrono::seconds(5));
   promise.set_value(41);
+  LOG(INFO) <<  "myFunction runs 5 seconds ...";
 }
 
 void threadFunction(std::shared_future<int> future) {
+  LOG(INFO) <<  "threadFunction Starting .....";
   try {
     int result = future.get();
-    LOG(INFO) <<  "Result: " << result;
+    LOG(INFO) <<  "threadFunction get Result: " << result;
   } catch (const std::future_error& e) {
     LOG(ERROR) << "Future error: " << e.what();
   }
@@ -149,7 +154,14 @@ void use_future_exception() {
 int main(int argc, char* argv[]) {
   FLAGS_minloglevel = 0;
   FLAGS_alsologtostderr = 1;
-  google::InitGoogleLogging(argv[1]);
+  google::InitGoogleLogging(argv[0]);
   use_async();
+  use_package();
+  use_shared_future();
+  use_shared_future_error();
+  use_promise();
+  use_promise_exception();
+  use_promise_destruct();
+  use_future_exception();
   return 0;
 }
