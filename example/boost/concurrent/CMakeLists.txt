@@ -72,3 +72,17 @@ install(TARGETS example05_condition_variable
     RUNTIME
     DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
 
+add_executable(example06_futurepromise example06_futurepromise.cpp)
+target_link_libraries(example06_futurepromise
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC glog::glog
+)
+install(TARGETS example06_futurepromise
+    RUNTIME
+    DESTINATION examples/cpp/boost/conurrent/${BIN_INSTALL_DIR})
+
