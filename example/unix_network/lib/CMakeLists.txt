@@ -3,7 +3,8 @@ cmake_minimum_required(VERSION 3.22)
 project(UnixIpc)
 
 add_library(unix-network-ipc-lib  px_ipc_name.cpp
-wrapunix.cpp error.cpp wrapstdio.cpp readline.cpp signal.cpp)
+wrapunix.cpp error.cpp wrapstdio.cpp readline.cpp signal.cpp
+signal_tr.cpp)
 
 target_link_libraries(unix-network-ipc-lib
     PUBLIC ${Boost_LIBRARIES}
