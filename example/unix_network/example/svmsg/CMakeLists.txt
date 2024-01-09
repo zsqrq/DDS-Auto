@@ -40,3 +40,11 @@ target_link_libraries(unix_network_msgrcv
 install(TARGETS unix_network_msgrcv
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_msgrmid msgrmid.cpp)
+target_link_libraries(unix_network_msgrmid
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_msgrmid
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})

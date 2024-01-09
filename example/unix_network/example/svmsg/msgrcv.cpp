@@ -3,25 +3,37 @@
 //
 #include "common/unpipcmsg.h"
 
+#define	MAXMSG	(8192 + sizeof(long))
+
 int
 main(int argc, char **argv)
 {
-  int		mqid;
-  size_t	len;
+  int		c, flag, mqid;
   long	type;
-  struct msgbuf	*ptr;
+  ssize_t	n;
+  struct msgbuf	*buff;
 
-  if (argc != 4)
-    err_quit("usage: msgsnd <pathname> <#bytes> <type>");
-  len = atoi(argv[2]);
-  type = atoi(argv[3]);
+  type = flag = 0;
+  while ( (c = Getopt(argc, argv, "nt:")) != -1) {
+    switch (c) {
+      case 'n':
+        flag |= IPC_NOWAIT;
+        break;
 
-  mqid = Msgget(Ftok(argv[1], 0), MSG_W);
+      case 't':
+        type = atol(optarg);
+        break;
+    }
+  }
+  if (optind != argc - 1)
+    err_quit("usage: msgrcv [ -n ] [ -t type ] <pathname>");
 
-  ptr = static_cast<struct msgbuf*>(Calloc(sizeof(long) + len, sizeof(char)));
-  ptr->mtype = type;
+  mqid = Msgget(Ftok(argv[optind], 0), IPC_CREAT | 0666);
 
-  Msgsnd(mqid, ptr, len, 0);
+  buff = static_cast<struct msgbuf*>(Malloc(MAXMSG));
+
+  n = Msgrcv(mqid, buff, MAXMSG, type, flag);
+  printf("read %d bytes, type = %ld\n", n, buff->mtype);
 
   exit(0);
 }
