@@ -48,3 +48,11 @@ target_link_libraries(unix_network_msgrmid
 install(TARGETS unix_network_msgrmid
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_msgrcvid msgrcvid.cpp)
+target_link_libraries(unix_network_msgrcvid
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_msgrcvid
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
