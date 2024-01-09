@@ -16,3 +16,27 @@ target_link_libraries(unix_network_ctl
 install(TARGETS unix_network_ctl
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_msgcreate msgcreate.cpp)
+target_link_libraries(unix_network_msgcreate
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_msgcreate
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_msgsend msgsend.cpp)
+target_link_libraries(unix_network_msgsend
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_msgsend
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_msgrcv msgrcv.cpp)
+target_link_libraries(unix_network_msgrcv
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_msgrcv
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/svmsg/${BIN_INSTALL_DIR})
