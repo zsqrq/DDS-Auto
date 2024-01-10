@@ -17,6 +17,10 @@ struct {
 } put = { PTHREAD_MUTEX_INITIALIZER };
 
 struct {
+  pthread_rwlock_t rwlock_;
+} rwlock = {PTHREAD_RWLOCK_INITIALIZER};
+
+struct {
   pthread_mutex_t	mutex;
   pthread_cond_t	cond;
   int				nready;	/* number ready for consumer */
