@@ -4,7 +4,7 @@
 /* config.h.  Generated automatically by configure.  */
 /* Define the following if you have the corresponding header */
 #define	CPU_VENDOR_OS ""
-
+#include <thread>
 /* *INDENT-OFF* */
 /* #undef	HAVE_DOOR_H */				/* <door.h> */
 #define	HAVE_MQUEUE_H 1				/* <mqueue.h> */
@@ -43,6 +43,7 @@
 #define	HAVE_SHM_OPEN_PROTO 1		/* <sys/mman.h> */
 #define	HAVE_SNPRINTF_PROTO 1		/* <stdio.h> */
 /* #undef	HAVE_THR_SETCONCURRENCY_PROTO */		/* <thread.h> */
+//#define	HAVE_THR_SETCONCURRENCY_PROTO 1
 
 /* Define the following if the structure is defined. */
 #define	HAVE_SIGINFO_T_STRUCT 1		/* <signal.h> */
