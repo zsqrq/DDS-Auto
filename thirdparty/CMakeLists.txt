@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 3.22)
+project(thirdparty)
+
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/fast-dds/lib/
     DESTINATION lib
     FILES_MATCHING PATTERN "*.so*")
