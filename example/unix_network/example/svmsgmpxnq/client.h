@@ -5,6 +5,7 @@
 #ifndef FAST_DDS_EXAMPLE_EXAMPLE_UNIX_NETWORK_EXAMPLE_SVMSGCLISERV_CLIENT_H_
 #define FAST_DDS_EXAMPLE_EXAMPLE_UNIX_NETWORK_EXAMPLE_SVMSGCLISERV_CLIENT_H_
 #include "message.h"
+#include "common/unpipc.h"
 
 void
 client(int readid, int writeid)
