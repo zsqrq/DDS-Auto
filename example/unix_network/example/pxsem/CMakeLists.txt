@@ -80,3 +80,12 @@ target_link_libraries(unix_network_pxsem_mycat2
 install(TARGETS unix_network_pxsem_mycat2
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxsem_sysconf semsysconf.cpp)
+target_link_libraries(unix_network_pxsem_sysconf
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxsem_sysconf
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
+
