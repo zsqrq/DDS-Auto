@@ -25,10 +25,8 @@ int main(int argc, char** argv) {
 
   nitems = atoi(argv[1]);
   shared.mutex = Sem_open(Px_ipc_name(SEM_MUTEX), O_CREAT | O_EXCL, FILE_MODE, 1);
-  shared.nempty = Sem_open(Px_ipc_name(SEM_NEMPTY), O_CREAT | O_EXCL,
-                           FILE_MODE, NBUFF);
-  shared.nstored = Sem_open(Px_ipc_name(SEM_NSTORED), O_CREAT | O_EXCL,
-                            FILE_MODE, 0);
+  shared.nempty = Sem_open(Px_ipc_name(SEM_NEMPTY), O_CREAT | O_EXCL, FILE_MODE, NBUFF);
+  shared.nstored = Sem_open(Px_ipc_name(SEM_NSTORED), O_CREAT | O_EXCL, FILE_MODE, 0);
   Set_concurrency(2);
   Pthread_create(&tid_produce, NULL, produce, NULL);
   Pthread_create(&tid_consume, NULL, consume, NULL);
@@ -44,8 +42,7 @@ int main(int argc, char** argv) {
   exit(0);
 }
 
-void *
-produce(void *arg)
+void * produce(void *arg)
 {
   int		i;
 
@@ -59,8 +56,7 @@ produce(void *arg)
   return(NULL);
 }
 
-void *
-consume(void *arg)
+void * consume(void *arg)
 {
   int		i;
 

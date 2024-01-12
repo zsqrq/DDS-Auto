@@ -48,3 +48,35 @@ target_link_libraries(unix_network_pxsem_prodcons1
 install(TARGETS unix_network_pxsem_prodcons1
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxsem_prodcons2 prodcons2.cpp)
+target_link_libraries(unix_network_pxsem_prodcons2
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxsem_prodcons2
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxsem_prodcons3 prodcons3.cpp)
+target_link_libraries(unix_network_pxsem_prodcons3
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxsem_prodcons3
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxsem_prodcons4 prodcons4.cpp)
+target_link_libraries(unix_network_pxsem_prodcons4
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxsem_prodcons4
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_pxsem_mycat2 mycat2.cpp)
+target_link_libraries(unix_network_pxsem_mycat2
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_pxsem_mycat2
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/pxsem/${BIN_INSTALL_DIR})
