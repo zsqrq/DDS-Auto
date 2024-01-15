@@ -1,14 +1,11 @@
 cmake_minimum_required(VERSION 3.22)
-project(UnixIpcPxsemFifo)
+project(UnixIpcPxsemSvsem)
 
-add_library(unix-network-mysemfifo-lib SHARED
+add_library(unix-network-mysemsvsem-lib SHARED
     sem_open.cpp
-    sem_close.cpp
-    sem_post.cpp
-sem_unlink.cpp
-sem_wait.cpp)
+)
 
-target_link_libraries(unix-network-mysemfifo-lib
+target_link_libraries(unix-network-mysemsvsem-lib
     PUBLIC ${Boost_LIBRARIES}
     PUBLIC fastrtps
     PUBLIC fastcdr
@@ -19,6 +16,6 @@ target_link_libraries(unix-network-mysemfifo-lib
     PUBLIC unix-network-ipc-lib
 )
 
-install(TARGETS unix-network-mysemfifo-lib
+install(TARGETS unix-network-mysemsvsem-lib
     LIBRARY
     DESTINATION lib)

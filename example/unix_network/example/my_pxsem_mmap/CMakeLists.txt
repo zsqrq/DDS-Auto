@@ -1,14 +1,17 @@
 cmake_minimum_required(VERSION 3.22)
-project(UnixIpcPxsemFifo)
+project(UnixIpcPxsemMmap)
 
-add_library(unix-network-mysemfifo-lib SHARED
+add_library(unix-network-mysemmmap-lib SHARED
     sem_open.cpp
     sem_close.cpp
+    sem_unlink.cpp
     sem_post.cpp
-sem_unlink.cpp
-sem_wait.cpp)
+    sem_wait.cpp
+    sem_trywait.cpp
+    sem_getvalue.cpp
+)
 
-target_link_libraries(unix-network-mysemfifo-lib
+target_link_libraries(unix-network-mysemmmap-lib
     PUBLIC ${Boost_LIBRARIES}
     PUBLIC fastrtps
     PUBLIC fastcdr
@@ -19,6 +22,6 @@ target_link_libraries(unix-network-mysemfifo-lib
     PUBLIC unix-network-ipc-lib
 )
 
-install(TARGETS unix-network-mysemfifo-lib
+install(TARGETS unix-network-mysemmmap-lib
     LIBRARY
     DESTINATION lib)

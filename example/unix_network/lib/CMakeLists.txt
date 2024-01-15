@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 
 project(UnixIpc)
 
-add_library(unix-network-ipc-lib  px_ipc_name.cpp
+add_library(unix-network-ipc-lib  SHARED px_ipc_name.cpp
 wrapunix.cpp error.cpp wrapstdio.cpp readline.cpp signal.cpp
 signal_tr.cpp wrappthread.cpp
 set_concurrency.cpp

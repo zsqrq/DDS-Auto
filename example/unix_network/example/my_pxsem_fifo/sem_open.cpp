@@ -32,7 +32,7 @@ mysem_open(const char *pathname, int oflag, ... )
   }
 
 /* *INDENT-OFF* */
-  if ( (sem = malloc(sizeof(mysem_t))) == NULL)
+  if ( (sem = static_cast<mysem_t*>(malloc(sizeof(mysem_t)))) == NULL)
     return(SEM_FAILED);
   sem->sem_fd[0] = sem->sem_fd[1] = -1;
 
