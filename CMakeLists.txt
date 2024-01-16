@@ -29,9 +29,9 @@ if(NOT Json)
 endif()
 
 if(NOT CMAKE_BUILD_TYPE)
-    set(DEFAULT_COMPILE -std=c++20 -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
+    set(DEFAULT_COMPILE -std=c++20 -pthread -latomic -O0 -g3 -Wall -c -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 else()
-    set(DEFAULT_COMPILE -std=c++20 -O3 -Wall -c -fmessage-length=0 -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
+    set(DEFAULT_COMPILE -std=c++20 -pthread -O3 -Wall -c -fmessage-length=0 -fPIC -fPIE -pie -fstack-protector-all -Wtrampolines)
 endif()
 
 add_link_options(-Wl,--disable-new-dtags)
