@@ -48,3 +48,11 @@ target_link_libraries(unix_network_shm_tets1
 install(TARGETS unix_network_shm_tets1
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/shm/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_shm_tets2 test2.cpp)
+target_link_libraries(unix_network_shm_tets2
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_shm_tets2
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/shm/${BIN_INSTALL_DIR})

@@ -16,7 +16,7 @@ int main(int argc, char** argv) {
 
   fd = Open(argv[1], O_RDWR | O_CREAT | O_TRUNC, FILE_MODE);
   Lseek(fd, filesize-1, SEEK_SET);
-  Write(fd,"",1);
+  Write(fd,"a",1);
 
   ptr = (char*) Mmap(NULL,mmapsize, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
   Close(fd);
