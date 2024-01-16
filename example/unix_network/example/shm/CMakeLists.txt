@@ -24,3 +24,27 @@ target_link_libraries(unix_network_shm_incr3
 install(TARGETS unix_network_shm_incr3
     RUNTIME
     DESTINATION examples/cpp/unix_network/example/shm/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_shm_incr_map_anon incr_map_anon.cpp)
+target_link_libraries(unix_network_shm_incr_map_anon
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_shm_incr_map_anon
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/shm/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_shm_incr_dev_zero incr_dev_zero.cpp)
+target_link_libraries(unix_network_shm_incr_dev_zero
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_shm_incr_dev_zero
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/shm/${BIN_INSTALL_DIR})
+
+add_executable(unix_network_shm_tets1 test1.cpp)
+target_link_libraries(unix_network_shm_tets1
+    PUBLIC unix-network-ipc-lib
+)
+install(TARGETS unix_network_shm_tets1
+    RUNTIME
+    DESTINATION examples/cpp/unix_network/example/shm/${BIN_INSTALL_DIR})
