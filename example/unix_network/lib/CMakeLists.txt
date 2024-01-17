@@ -8,7 +8,8 @@ signal_tr.cpp wrappthread.cpp
 set_concurrency.cpp
 lock_reg.cpp
 lock_test.cpp
-gf_time.cpp)
+gf_time.cpp
+sleep_us.cpp)
 
 target_link_libraries(unix-network-ipc-lib
     PUBLIC ${Boost_LIBRARIES}
