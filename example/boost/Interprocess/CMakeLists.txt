@@ -257,3 +257,35 @@ target_link_libraries(boost_intra_complex_map
 install(TARGETS boost_intra_complex_map
     RUNTIME
     DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_cont doc_cont.cpp)
+target_link_libraries(boost_intra_doc_cont
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_cont
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_file_mapping doc_file_mapping.cpp)
+target_link_libraries(boost_intra_doc_file_mapping
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_file_mapping
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
