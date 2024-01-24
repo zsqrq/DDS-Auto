@@ -289,3 +289,51 @@ target_link_libraries(boost_intra_doc_file_mapping
 install(TARGETS boost_intra_doc_file_mapping
     RUNTIME
     DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_instrusive doc_instrusive.cpp)
+target_link_libraries(boost_intra_doc_instrusive
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_instrusive
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_ipc_message doc_ipc_message.cpp)
+target_link_libraries(boost_intra_doc_ipc_message
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_ipc_message
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_managed_aligned_allocation doc_managed_aligned_allocation.cpp)
+target_link_libraries(boost_intra_managed_aligned_allocation
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_managed_aligned_allocation
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
