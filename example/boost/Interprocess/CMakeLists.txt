@@ -369,3 +369,83 @@ target_link_libraries(boost_intra_managed_construction_info
 install(TARGETS boost_intra_managed_construction_info
     RUNTIME
     DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_managed_copy_on_write doc_managed_copy_on_write.cpp)
+target_link_libraries(boost_intra_managed_copy_on_write
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_managed_copy_on_write
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_managed_external_buffer doc_managed_external_buffer.cpp)
+target_link_libraries(boost_intra_managed_external_buffer
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_managed_external_buffer
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_managed_grow doc_managed_grow.cpp)
+target_link_libraries(boost_intra_managed_grow
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_managed_grow
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_managed_heap_memory doc_managed_heap_memory.cpp)
+target_link_libraries(boost_intra_managed_heap_memory
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_managed_heap_memory
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_managed_mapped_file doc_managed_mapped_file.cpp)
+target_link_libraries(boost_intra_managed_mapped_file
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_managed_mapped_file
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
