@@ -561,3 +561,67 @@ target_link_libraries(boost_intra_doc_named_mutex
 install(TARGETS boost_intra_doc_named_mutex
     RUNTIME
     DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_node_allocator doc_node_allocator.cpp)
+target_link_libraries(boost_intra_doc_node_allocator
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_node_allocator
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_offset_ptr doc_offset_ptr.cpp)
+target_link_libraries(boost_intra_doc_offset_ptr
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_offset_ptr
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_private_adaptive_pool doc_private_adaptive_pool.cpp)
+target_link_libraries(boost_intra_doc_private_adaptive_pool
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_private_adaptive_pool
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
+
+add_executable(boost_intra_doc_private_node_allocator doc_private_node_allocator.cpp)
+target_link_libraries(boost_intra_doc_private_node_allocator
+    PUBLIC ${Boost_LIBRARIES}
+    PUBLIC fastrtps
+    PUBLIC fastcdr
+    PUBLIC boost_thread
+    PUBLIC boost_coroutine
+    PUBLIC boost_context
+    PUBLIC boost_fiber
+    PUBLIC boost_unit_test_framework
+    PUBLIC glog::glog
+)
+install(TARGETS boost_intra_doc_private_node_allocator
+    RUNTIME
+    DESTINATION examples/cpp/boost/Interprocess/${BIN_INSTALL_DIR})
